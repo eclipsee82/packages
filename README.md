@@ -5,7 +5,12 @@
 ```javascript
 repositories {
     maven {
-        url = uri("https://maven.pkg.github.com/eclipsee82/packages")
+        url ("https://maven.pkg.github.com/eclipsee82/packages")
+        artifactUrls("https://maven.pkg.github.com/eclipsee82/packages")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+        }
     }
 }
 ```
